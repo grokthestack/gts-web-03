@@ -2,7 +2,7 @@
 
 <p>Please leave me a message below!</p>
 
-<form method="post" action="/">
+<form method="post" action="/gts">
 
 	<label for="name">Your Name</label>
 	<input type="text" name="name" />
@@ -14,3 +14,12 @@
 	<input type="submit" value="Post" />
 
 </form>
+
+<% if @guestbook.length>0 %>
+   <p>Previous guestbook entries</p>
+   <ul>
+   <% @guestbook.each do |entry| %>
+      <li><b><%=entry['name']%></b>: <%=entry['message']%></li>
+   <%end%>
+   </ul>
+<%end%>

@@ -53,7 +53,7 @@ class ApplicationTest < Test::Unit::TestCase
 			:name => "test_name_#{rand(256)}",
 			:message => "test_name_#{rand(256)}"
 		}
-		post '/', data
+		post '/gts', data
 		# Refering to the data variable in the last line of the code block
 		# will cause data to be the return value.
 		data
@@ -64,7 +64,7 @@ class ApplicationTest < Test::Unit::TestCase
 	# ensure that each test can stand on its own.
 
 	def test_homepage
-		get '/'
+		get '/gts'
 		assert last_response.ok?,
 			"Homepage loaded without an error."
 		assert last_response.body.include?('Please leave me a message below!'),
@@ -84,7 +84,7 @@ class ApplicationTest < Test::Unit::TestCase
 		# because the code we put in setup deletes everything in the guestbook
 		# table before running each test.
 		message = post_message
-		get '/'
+		get '/gts'
 		assert last_response.ok?, "No errors returned."
 		assert last_response.body.include?(message[:name]),
 			"Posted name is displayed on the main page."
