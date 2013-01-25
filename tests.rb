@@ -39,10 +39,10 @@ class ApplicationTest < Test::Unit::TestCase
 	def setup
 		# If there's no test database, we'll use the return statement to stop
 		# executing the rest of this code block.
-		return unless File.exists?('test.db')
+		return unless File.exists?('test.sqlite3')
 		# We'll delete everything in our database so that the results of one
 		# test don't affect other tests.
-		db = SQLite3::Database.new('test.db')
+		db = SQLite3::Database.new('test.sqlite3')
 		db.execute "DELETE FROM guestbook WHERE 1;"
 	end
 

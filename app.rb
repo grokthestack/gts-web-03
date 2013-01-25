@@ -15,7 +15,7 @@ require "sqlite3"
 #
 # For example, Sinatra will return "development" as the environment if no
 # other environment has been set.
-database_file = settings.environment.to_s+".db"
+database_file = settings.environment.to_s+".sqlite3"
 
 # We'll either create or hook into the database file (*.db) for our
 # application.
