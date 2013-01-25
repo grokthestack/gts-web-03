@@ -1,4 +1,4 @@
-HTTP is a stateless protocol.
+HTTP is a stateless protocol. 
 
 We can change our HTML output in response to user action, but we can't know what actions they've performed in the past.
 
