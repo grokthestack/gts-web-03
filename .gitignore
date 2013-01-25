@@ -1,0 +1,12 @@
+# This file tells Git to ignore files which match the patterns below.
+# We use this because we don't want to store our databases in the 
+# repository.
+
+*.sqlite3
+
+# Another common use of the .gitignore file is to store configuration files.
+# We don't need to worry about this right now.
+
+# Your system also has a global .gitignore file which will allow you to ignore
+# files that are created automatically by your operating system or other 
+# applications, for example .DS_Store in OSX.
