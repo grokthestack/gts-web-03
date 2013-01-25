@@ -16,6 +16,7 @@ require "sqlite3"
 # For example, Sinatra will return "development" as the environment if no
 # other environment has been set.
 database_file = settings.environment.to_s+".sqlite3"
+puts "database file #{database_file}"
 
 # We'll either create or hook into the database file (*.db) for our
 # application.
@@ -29,12 +30,13 @@ db.results_as_hash = true
 # "guestbook" doesn't exist (IF NOT EXISTS), then we'll create it.
 db.execute "
 	CREATE TABLE IF NOT EXISTS guestbook (
-		name VARCHAR(255)
+		name VARCHAR(255),
+		message VARCHAR(255)
 	);
 ";
 
 get '/' do
-	# erb is a template system which runs Ruby code embedded within text.
+	@guestbook = db.execute "SELECT * FROM guestbook WHERE 1;"
 	erb  File.read('our_form.erb')
 end
 
@@ -43,6 +45,8 @@ post '/' do
 	# available only in this object and only while handling this specific 
 	# HTTP request.
 	@name = params['name']
+	@message = params['message']
+	db.execute "INSERT into guestbook VALUES ('#{@name}', '#{@message}');";
 	# Sinatra sends instance variables to our templates, so we can also use
 	# @name within thanks.erb.
 	erb File.read('thanks.erb')
