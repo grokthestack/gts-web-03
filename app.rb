@@ -29,20 +29,24 @@ db.results_as_hash = true
 # "guestbook" doesn't exist (IF NOT EXISTS), then we'll create it.
 db.execute "
 	CREATE TABLE IF NOT EXISTS guestbook (
-		name VARCHAR(255)
+		name VARCHAR(255),
+      message VARCHAR(255)
 	);
 ";
 
-get '/' do
+get '/gts' do
+   @guestbook = db.execute "select * from guestbook;"
 	# erb is a template system which runs Ruby code embedded within text.
 	erb  File.read('our_form.erb')
 end
 
-post '/' do
+post '/gts' do
 	# The @ in front of name means that it's an instance variable, and will be
 	# available only in this object and only while handling this specific 
 	# HTTP request.
 	@name = params['name']
+
+   db.execute("insert into guestbook (name,message) values ('#{params['name']}', '#{params['message']}');")
 	# Sinatra sends instance variables to our templates, so we can also use
 	# @name within thanks.erb.
 	erb File.read('thanks.erb')
