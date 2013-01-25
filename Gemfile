@@ -1,3 +1,5 @@
+source 'https://rubygems.org'
+
 # Rack is a library used by nearly all Ruby frameworks.
 gem "rack"
 
