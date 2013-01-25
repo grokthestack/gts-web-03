@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 # Rack is a library used by nearly all Ruby frameworks.
 gem "rack"
+# Test library for rack
+gem "rack-test"
 
 # Sinatra is a lightweight framework to make routing HTTP requests easier.
 gem "sinatra"
