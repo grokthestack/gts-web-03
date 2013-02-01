@@ -201,4 +201,3 @@ But that's annoying, so you might want to stick with the other syntax.
 That's all you should need to know to complete this week's project.  The form is already created for you, so all you'll have to do is add code in the right places to either add an entry to the guestbook database or retrieve the entries to display within the template.  You'll also have to fix the CREATE TABLE statement, which is incomplete.
 
 When you think you've solved the challenge, type 'ruby tests.rb' on the command line.  Once the test runner tells you there are zero errors, you can push the code to your GitHub fork and then create a pull request, just like we did in our first lesson.
-
