@@ -14,3 +14,9 @@
 	<input type="submit" value="Post" />
 
 </form>
+
+<ul>
+<% @guestbook.each do |entry| %>
+	<li>Name: <%=entry['name']%>&nbsp; &nbsp; &nbsp;They said: <%=entry['message']%></li>
+<% end %>
+</ul>
