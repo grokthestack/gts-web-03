@@ -15,4 +15,4 @@ gem "test-unit"
 # run through a central application which stores all information about each
 # database on the system, SQLite databases are single files. This makes
 # SQLite very popular for local development.
-gem "sqlite3-ruby"
+gem "sqlite3"
