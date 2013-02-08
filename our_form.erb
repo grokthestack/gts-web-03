@@ -14,3 +14,8 @@
 	<input type="submit" value="Post" />
 
 </form>
+
+<% @messages.each do |m| %>
+<%= m['name']%>
+<%= m['message']%><p/>
+<% end %>
