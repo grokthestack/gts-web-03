@@ -1,12 +1,11 @@
-<h1>Welcome to My Site</h1>
+<h1>BOAT</h1>
 
-<p>Please leave me a message below!</p>
+<p>messages i guess</p>
 
 <form method="post" action="/">
 
 	<label for="name">Your Name</label>
 	<input type="text" name="name" />
-
 
 	<label for="message">Your Message</label>
 	<input type="text" name="message" />
@@ -14,3 +13,12 @@
 	<input type="submit" value="Post" />
 
 </form>
+
+<% if (@guestbook.length>0) %>
+	<h2>~*~AQUATICS~*~</h2>
+	
+	<% @guestbook.each do |m| %>
+		<p><b><%= m['name'] %></b> said: "<%= m['message'] %>"</p>
+	<% end %>
+
+<% end %>
