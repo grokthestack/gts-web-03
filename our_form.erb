@@ -12,5 +12,13 @@
 	<input type="text" name="message" />
 
 	<input type="submit" value="Post" />
-
+	<% if @guestbook.length > 0 %>
+		<%= "we have #{@guestbook.length} entries" %>
+	    
+	    <% @guestbook.each do |entries| %>
+	    <%= "Person: #{entries['name']}"%>
+	    <%= "Message: #{entries['message']}"%>
+	    <br>
+	 <% end %>
+    <% end %>
 </form>
