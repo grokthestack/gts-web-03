@@ -12,5 +12,11 @@
 	<input type="text" name="message" />
 
 	<input type="submit" value="Post" />
-
+	
 </form>
+<% if @log.length>0 %>
+    <% @log.each do |item| %>
+		<b>Name: <%= item['name'] %> said, <%= item['message'] %> </b>
+		<br/>
+    <% end %>
+<% end %>
