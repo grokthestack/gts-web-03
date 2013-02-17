@@ -29,12 +29,20 @@ db.results_as_hash = true
 # "guestbook" doesn't exist (IF NOT EXISTS), then we'll create it.
 db.execute "
 	CREATE TABLE IF NOT EXISTS guestbook (
-		name VARCHAR(255)
+		name VARCHAR(255),
+		message VARCHAR(255)
 	);
 ";
 
 get '/' do
 	# erb is a template system which runs Ruby code embedded within text.
+	@messages = db.execute "SELECT * FROM guestbook WHERE 1;"
+	if @messages.length>0
+		puts "Previous Messages"
+		@messages.each do |entry|
+			puts entry.inspect
+		end
+	end
 	erb  File.read('our_form.erb')
 end
 
@@ -43,6 +51,8 @@ post '/' do
 	# available only in this object and only while handling this specific 
 	# HTTP request.
 	@name = params['name']
+	# Update database guestbook with name and message.
+	db.execute "INSERT INTO guestbook VALUES (?, ?);", @name, params['message']
 	# Sinatra sends instance variables to our templates, so we can also use
 	# @name within thanks.erb.
 	erb File.read('thanks.erb')

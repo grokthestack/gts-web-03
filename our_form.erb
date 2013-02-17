@@ -14,3 +14,10 @@
 	<input type="submit" value="Post" />
 
 </form>
+
+<% if @messages.length > 0 %>
+	<p>Previous Messages:</p>
+	<% @messages.each do |entry| %>
+		<p> <%= entry ['name'] %>: "<%= entry ['message'] %>"</p>
+	<% end %>
+<% end %>
